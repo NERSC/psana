@@ -1,5 +1,10 @@
-[Running at NERSC](https://confluence.slac.stanford.edu/display/PCDS/Running+at+NERSC)
+[LCLS Data Analysis at NERSC](https://confluence.slac.stanford.edu/display/PCDS/Running+at+NERSC)
 ===
+
+[`psana python`](https://confluence.slac.stanford.edu/display/PSDM/LCLS+Data+Analysis) -A scalable software stack to analyze LCLS data can be used run at [NERSC](www.nersc.gov) using [Shifter](https://github.com/NERSC/shifter).
+---
+
+
 Currently this is only possible for "early access users" who have accounts at NERSC.
 
   - data are available at NERSC in this directory (the equivalent of `/reg/d/psdm`): /`global/project/projectdirs/lcls/d/psdm/`.  Set environment variable `SIT_PSDM_DATA` to this location so psana will be able to locate the data
@@ -37,9 +42,7 @@ Getting An Account
 Apply for an account [HERE](http://www.nersc.gov/users/accounts/user-accounts/get-a-nersc-account/).
 
 Useful NERSC Links
----
-(courtesy of Anton Barty)
- 
+--- 
   - [Modules](http://www.nersc.gov/users/software/nersc-user-environment/modules/)
   - [Version control](http://www.nersc.gov/users/software/version-control-tools/)
   - [Libraries](http://www.nersc.gov/users/software/programming-libraries/)
