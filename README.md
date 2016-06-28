@@ -1,9 +1,7 @@
 [LCLS Data Analysis at NERSC](https://confluence.slac.stanford.edu/display/PCDS/Running+at+NERSC)
 ===
 
-[`psana python`](https://confluence.slac.stanford.edu/display/PSDM/LCLS+Data+Analysis) -A scalable software stack to analyze LCLS data can be used run at [NERSC](www.nersc.gov) using [Shifter](https://github.com/NERSC/shifter).
----
-
+[`psana python`](https://confluence.slac.stanford.edu/display/PSDM/LCLS+Data+Analysis) *-A scalable software stack to analyze LCLS data can be used run at [NERSC](www.nersc.gov) using [Shifter](https://github.com/NERSC/shifter).*
 
 Currently this is only possible for "early access users" who have accounts at NERSC.
 
