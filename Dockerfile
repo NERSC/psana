@@ -45,7 +45,36 @@ RUN tar -xf hdf5-1.8.6-linux-x86_64-shared.tar.gz &&\
     mv hdf5-1.8.6-linux-x86_64-shared \
        /reg/g/psdm/sw/external/hdf5/1.8.6/x86_64-rhel6-gcc44-opt
 
-# add cray mpi
+# =============================================================================
+## INSTALL CRAY DEPENDENCIES
+ADD /home/bpoon/optcray_alva.tar /
+RUN printf "/opt/cray/mpt/default/gni/mpich2-gnu/48/lib\n" >> /etc/ld.so.conf && \
+    printf "/opt/cray/pmi/default/lib64\n" >> /etc/ld.so.conf && \
+    printf "/opt/cray/ugni/default/lib64\n" >> /etc/ld.so.conf && \
+    printf "/opt/cray/udreg/default/lib64\n" >> /etc/ld.so.conf && \
+    printf "/opt/cray/xpmem/default/lib64\n" >> /etc/ld.so.conf && \
+    printf "/opt/cray/alps/default/lib64\n" >> /etc/ld.so.conf && \
+    printf "/opt/cray/wlm_detect/default/lib64\n" >> /etc/ld.so.conf && \
+    printf "/opt/cray/wlm_detect/default/lib64/libwlm_detect.so.0" >> /etc/ld.so.preload && \
+    ldconfig
+
+### replace psdm mpi4py with cray-tuned one
+### TODO it would be nice if this could use the existing scons build system
+ADD https://bitbucket.org/mpi4py/mpi4py/downloads/mpi4py-1.3.1.tar.gz /usr/src/
+ADD mpi.cfg /usr/src/
+RUN source /reg/g/psdm/etc/ana_env.sh && \
+    cd /usr/src && \
+    mkdir -p mpi4py && \
+    tar xf mpi4py-1.3.1.tar.gz -C mpi4py --strip-components=1 && \
+    mv mpi.cfg mpi4py && \
+    cd mpi4py && \
+    mv /reg/g/psdm/sw/external/mpi4py/1.3.1d /reg/g/psdm/sw/external/mpi4py/1.3.1d.orig && \
+    mkdir -p /reg/g/psdm/sw/external/mpi4py/1.3.1d/x86_64-rhel6-gcc44-opt && \
+    python setup.py build && \
+    python setup.py install --prefix=/reg/g/psdm/sw/external/mpi4py/1.3.1d/x86_64-rhel6-gcc44-opt && \
+    cd / && rm -rf /usr/src/mpi4py
+
+# =============================================================================
 
 # build myrelease
 RUN cd /reg/g &&\
