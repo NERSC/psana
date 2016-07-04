@@ -15,7 +15,7 @@ RUN yum -y install alsa-lib atk compat-libf2c-34 fontconfig freetype gsl \
     libXrender libXtst libXxf86vm mesa-libGL mesa-libGLU gtk2 \
     xorg-x11-fonts-Type1 xorg-x11-fonts-base xorg-x11-fonts-100dpi \
     xorg-x11-fonts-truetype xorg-x11-fonts-75dpi xorg-x11-fonts-misc \
-    tar xz which gcc gcc-c++ mysql libibverbs
+    tar xz which gcc gcc-c++ mysql libibverbs openssh-server openssh
 #    ln -s /usr/lib64/mysql/libmysqlclient.so.16 \
 #          /usr/lib64/mysql/libmysqlclient.so
 
@@ -44,6 +44,8 @@ RUN tar -xf hdf5-1.8.6-linux-x86_64-shared.tar.gz &&\
     mkdir -p /reg/g/psdm/sw/external/hdf5/1.8.6 &&\
     mv hdf5-1.8.6-linux-x86_64-shared \
        /reg/g/psdm/sw/external/hdf5/1.8.6/x86_64-rhel6-gcc44-opt
+
+# add cray mpi
 
 # build myrelease
 RUN cd /reg/g &&\
