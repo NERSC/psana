@@ -47,8 +47,10 @@ RUN tar -xf hdf5-1.8.6-linux-x86_64-shared.tar.gz &&\
 
 # =============================================================================
 ## INSTALL CRAY DEPENDENCIES
-ADD optcray_alva.tar /
-RUN printf "/opt/cray/mpt/default/gni/mpich2-gnu/48/lib\n" >> /etc/ld.so.conf && \
+COPY ./optcray_alva.tar /
+RUN cd / && \
+    tar -xf optcray_alva.tar && \
+    printf "/opt/cray/mpt/default/gni/mpich2-gnu/48/lib\n" >> /etc/ld.so.conf && \
     printf "/opt/cray/pmi/default/lib64\n" >> /etc/ld.so.conf && \
     printf "/opt/cray/ugni/default/lib64\n" >> /etc/ld.so.conf && \
     printf "/opt/cray/udreg/default/lib64\n" >> /etc/ld.so.conf && \
