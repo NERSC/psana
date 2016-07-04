@@ -33,8 +33,8 @@ ENV APT_CONFIG=/reg/g/psdm/sw/dist/apt-rpm/rhel6-x86_64/etc/apt/apt.conf
 #    ln -s /reg/g/psdm/sw/releases/ana-0.17.4 \
 #          /reg/g/psdm/sw/releases/ana-current
 RUN apt-get -y update; apt-get -y install \
-            psdm-release-ana-0.18.10-x86_64-rhel6-gcc44-opt &&\
-    ln -s /reg/g/psdm/sw/releases/ana-0.18.10 \
+            psdm-release-ana-0.19.0-x86_64-rhel6-gcc44-opt &&\
+    ln -s /reg/g/psdm/sw/releases/ana-0.19.0 \
           /reg/g/psdm/sw/releases/ana-current
 
 # use old HDF5 (1.8.6) for compatibility with cctbx.xfel
@@ -48,7 +48,7 @@ RUN tar -xf hdf5-1.8.6-linux-x86_64-shared.tar.gz &&\
 # build myrelease
 RUN cd /reg/g &&\
     source /reg/g/psdm/etc/ana_env.sh &&\
-    newrel ana-0.18.10 myrelease &&\
+    newrel ana-0.19.0 myrelease &&\
     cd myrelease &&\
     source sit_setup.sh &&\
     newpkg my_ana_pkg
@@ -61,9 +61,9 @@ RUN cd /reg/g/cctbx &&\
 
 # build cctbx.xfel
 # make needs to be run multiple times to ensure complete build (bug)
-ENV CPATH=/reg/g/psdm/sw/releases/ana-0.18.10/arch/x86_64-rhel6-gcc44-opt/geninc
-#:/reg/g/psdm/sw/releases/ana-0.18.10/arch/x86_64-rhel6-gcc44-opt/geninc/hdf5
-ENV LD_LIBRARY_PATH=/reg/g/psdm/sw/releases/ana-0.18.10/arch/x86_64-rhel6-gcc44-opt/lib
+ENV CPATH=/reg/g/psdm/sw/releases/ana-0.19.0/arch/x86_64-rhel6-gcc44-opt/geninc
+#:/reg/g/psdm/sw/releases/ana-0.19.0/arch/x86_64-rhel6-gcc44-opt/geninc/hdf5
+ENV LD_LIBRARY_PATH=/reg/g/psdm/sw/releases/ana-0.19.0/arch/x86_64-rhel6-gcc44-opt/lib
 RUN source /reg/g/psdm/etc/ana_env.sh &&\
     cd /reg/g/myrelease &&\
     sit_setup.sh &&\
