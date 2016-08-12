@@ -102,7 +102,7 @@ RUN source /reg/g/psdm/etc/ana_env.sh &&\
     sit_setup.sh &&\
     cd /reg/g/cctbx &&\
     python ./modules/cctbx_project/libtbx/auto_build/bootstrap.py build \
-    --builder=dials --with-python=`which python` --nproc=32 &&\
+    --builder=xfel --with-python=`which python` --nproc=32 &&\
     cd build &&\
     make -j 32 &&\
     make -j 32
